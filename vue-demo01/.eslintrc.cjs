@@ -19,7 +19,11 @@ module.exports = {
       ]
     }
   ],
+  rules: {
+    'linebreak-style': [0, 'error', 'windows',],
+  },
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
+  endOfLine: 'auto'
 }

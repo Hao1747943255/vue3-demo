@@ -1,11 +1,86 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<!--
+ * @creater: Hao1747943255 Hao1747943255@gmail.com
+ * @since: 2022-11-29 20:50:34
+ * @LastAuthor: Hao1747943255 Hao1747943255@gmail.com
+ * @lastTime: 2022-12-15 16:51:46
+ * @文件相对于项目的路径: \vue3-demo\vue-demo01\src\App.vue
+ * @message: 
+ * ! 行不行啊，细狗
+-->
+<script>
+import headModer from "./components/headModel.vue";
+import componApis from "./components/componsitionLx.vue";
+import drotade from "./components/drotade.vue";
+export default {
+  components: {
+    "head-model": headModer,
+    "compon-apis": componApis,
+    drotade,
+  },
+  data() {
+    return {
+      name: "",
+      flag: false,
+    };
+  },
+  mounted() {},
+  methods: {
+    numberless(max) {
+      return Math.ceil(Math.random() * max); //Math.max(min, Math.ceil(Math.random() * max))
+    },
+    toggleFlag() {
+      var arr = new Array(5);
+      var num = randomNumber();
+      var i = 0;
+      randomArr(arr, num);
+      function randomArr(arr, num) {
+        if (arr.indexOf(num) < 0) {
+          arr[i] = num;
+          i++;
+        } else {
+          num = randomNumber();
+        }
+        if (i >= arr.length) {
+          // console.log(arr);
+          return arr;
+        } else {
+          randomArr(arr, num);
+        }
+      }
+      function randomNumber() {
+        return Math.floor(Math.random() * 31 + 2);
+      }
+      return arr;
+    },
+    delLast(str, target) {
+      let reg = new RegExp(`${target}(?=([^${target}]*)$)`);
+      return str.replace(reg, "");
+    },
+    printString(str) {
+      console.log(new Set(str.split("")), "str");
+    },
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <main>
+    <drotade></drotade>
+    <br />
+    <head-model v-if="flag" class="box"></head-model>
+    <br />
+    <compon-apis></compon-apis>
+    <br />
+    <button @click="flag = !flag">click</button>
+    <br />
+    {{ name }}
+    <!-- <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -14,10 +89,21 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
-    </div>
-  </header>
+    </div> -->
+    <pre>
+    23
+    1 3 2
+    3 21
+  </pre
+    >
+    <code> 123 6465 1 456 </code>
+    <hr />
+    <menu>132刷卡后的风口浪尖深刻理解 数量的客服经理刷卡记录 </menu>
+    <address>我家在黄土高坡傲哦</address>
+    <input type="canlendar" name="" id="" />
+  </main>
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
